@@ -1,0 +1,6 @@
+[alias]
+1 = "run -p chal1"
+3 = "run -p chal3"
+4 = "run -p chal4 4.txt"
+5 = "run -p chal5"
+6 = "run -p chal6 6.txt"

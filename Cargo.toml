@@ -1,0 +1,9 @@
+[workspace]
+resolver = "2"
+members = ["crates/*"]
+
+[workspace.dependencies]
+ascii = "1.1"
+base64 = "0.22"
+common = { path = "crates/common" }
+hex = "0.4"
