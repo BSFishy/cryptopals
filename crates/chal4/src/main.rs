@@ -14,8 +14,8 @@ fn main() {
     let file_contents = read_to_string(filename).expect("failed to read file");
     let lines = file_contents.lines();
 
-    // FIXME: clone here, which isn't super efficient. might be able to use size hint instead?
-    let line_count = lines.clone().count();
+    let (line_count_low, line_count_high) = lines.size_hint();
+    let line_count = line_count_high.unwrap_or(line_count_low);
     let mut solutions = Vec::with_capacity(KEY_COUNT as usize * line_count);
 
     for line in lines {
