@@ -38,6 +38,17 @@ pub fn distance(a: impl IntoIterator<Item = u8>, b: impl IntoIterator<Item = u8>
     count
 }
 
+pub fn pkcs7pad(input: &str, block_size: usize, padding: char) -> String {
+    let mut output = input.to_string();
+    let amount = block_size - input.len() % block_size;
+
+    for _ in 0..amount {
+        output.push(padding);
+    }
+
+    output
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -65,5 +76,15 @@ mod tests {
         let distance = distance(a, b);
 
         assert_eq!(distance, 37);
+    }
+
+    #[test]
+    fn padding_works() {
+        let input = "YELLOW SUBMARINE";
+
+        assert_eq!(
+            pkcs7pad(input, 20, '\x04'),
+            "YELLOW SUBMARINE\x04\x04\x04\x04"
+        );
     }
 }

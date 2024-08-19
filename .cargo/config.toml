@@ -6,3 +6,4 @@
 6 = "run -p chal6 6.txt"
 7 = "run -p chal7 7.txt"
 8 = "run -p chal8 8.txt"
+9 = "run -p chal9"
