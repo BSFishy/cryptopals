@@ -3,9 +3,11 @@ resolver = "2"
 members = ["crates/*"]
 
 [workspace.dependencies]
+aes = "0.8"
 anyhow = "1.0"
 ascii = "1.1"
 base64 = "0.22"
 common = { path = "crates/common" }
+ecb = "0.1"
 hex = "0.4"
 openssl = "0.10"

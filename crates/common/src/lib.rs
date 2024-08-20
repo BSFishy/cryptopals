@@ -1,3 +1,14 @@
+mod cbc;
+pub use cbc::decrypt as cbc_decrypt;
+pub use cbc::encrypt as cbc_encrypt;
+
+pub fn xor(
+    a: impl IntoIterator<Item = u8>,
+    b: impl IntoIterator<Item = u8>,
+) -> impl Iterator<Item = u8> {
+    a.into_iter().zip(b).map(|(a, b)| a ^ b)
+}
+
 pub fn single_byte_xor(iter: impl IntoIterator<Item = u8>, val: u8) -> impl Iterator<Item = u8> {
     iter.into_iter().map(move |item| item ^ val)
 }
@@ -52,6 +63,16 @@ pub fn pkcs7pad(input: &str, block_size: usize, padding: char) -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn xor_plain_works() {
+        let a = hex::decode("1b37").unwrap();
+        let b = hex::decode("4f2c").unwrap();
+        let result: Vec<_> = xor(a, b).collect();
+        let result = hex::encode(result);
+
+        assert_eq!(result, "541b", "failed to xor properly");
+    }
 
     #[test]
     fn xor_works() {
