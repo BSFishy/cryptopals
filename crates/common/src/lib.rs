@@ -2,6 +2,9 @@ mod cbc;
 pub use cbc::decrypt as cbc_decrypt;
 pub use cbc::encrypt as cbc_encrypt;
 
+mod oracle;
+pub use oracle::{encryption_oracle, encryption_oracle2, has_repeats, EncryptionMethod};
+
 pub fn xor(
     a: impl IntoIterator<Item = u8>,
     b: impl IntoIterator<Item = u8>,

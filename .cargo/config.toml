@@ -8,3 +8,5 @@
 8 = "run -p chal8 8.txt"
 9 = "run -p chal9"
 10 = "run -p chal10 10.txt"
+11 = "run -p chal11"
+12 = "run -p chal12"
