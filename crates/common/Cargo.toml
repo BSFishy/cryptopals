@@ -12,3 +12,5 @@ ecb.workspace = true
 hex.workspace = true
 openssl.workspace = true
 rand.workspace = true
+thiserror.workspace = true
+utf8_reader.workspace = true

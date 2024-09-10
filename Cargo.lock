@@ -96,6 +96,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "chal13"
+version = "0.1.0"
+dependencies = [
+ "common",
+]
+
+[[package]]
 name = "chal3"
 version = "0.1.0"
 dependencies = [
@@ -175,6 +182,8 @@ dependencies = [
  "hex",
  "openssl",
  "rand",
+ "thiserror",
+ "utf8_reader",
 ]
 
 [[package]]
@@ -382,6 +391,26 @@ dependencies = [
 ]
 
 [[package]]
+name = "thiserror"
+version = "1.0.63"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c0342370b38b6a11b6cc11d6a805569958d54cfa061a29969c3b5ce2ea405724"
+dependencies = [
+ "thiserror-impl",
+]
+
+[[package]]
+name = "thiserror-impl"
+version = "1.0.63"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a4558b58466b9ad7ca0f102865eccc95938dca1a74a856f2b57b6629050da261"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
 name = "typenum"
 version = "1.17.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -392,6 +421,11 @@ name = "unicode-ident"
 version = "1.0.12"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3354b9ac3fae1ff6755cb6db53683adb661634f67557942dea4facebec0fee4b"
+
+[[package]]
+name = "utf8_reader"
+version = "0.1.0"
+source = "git+https://github.com/BSFishy/lexer.git#584d6622fe1bc284c580cf19adb152ab58cf4cdc"
 
 [[package]]
 name = "vcpkg"

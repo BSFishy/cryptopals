@@ -13,7 +13,7 @@ fn main() -> Result<()> {
 
     let message_len = detect_message_len(block_size)?;
 
-    let mut msg = vec![];
+    let mut msg = Vec::with_capacity(message_len);
     for _ in 0..message_len {
         let next_byte = detect_next_byte(&msg, block_size)?;
         msg.push(next_byte);
@@ -51,6 +51,7 @@ fn detect_message_len(block_size: usize) -> Result<usize> {
     bail!("failed to detect message length");
 }
 
+#[allow(clippy::ptr_arg)]
 fn detect_next_byte(ref_block: &Vec<u8>, block_size: usize) -> Result<u8> {
     let i = ref_block.len();
 

@@ -53,7 +53,6 @@ static COMMON_KEY: LazyLock<[u8; 16]> = LazyLock::new(rand::random);
 
 pub fn encryption_oracle2(mut input: Vec<u8>) -> Vec<u8> {
     let mut data = STANDARD.decode("Um9sbGluJyBpbiBteSA1LjAKV2l0aCBteSByYWctdG9wIGRvd24gc28gbXkgaGFpciBjYW4gYmxvdwpUaGUgZ2lybGllcyBvbiBzdGFuZGJ5IHdhdmluZyBqdXN0IHRvIHNheSBoaQpEaWQgeW91IHN0b3A/IE5vLCBJIGp1c3QgZHJvdmUgYnkK").expect("failed to decode oracle prefix");
-    // data.append(&mut input);
     input.append(&mut data);
 
     let cipher = Cipher::aes_128_ecb();
