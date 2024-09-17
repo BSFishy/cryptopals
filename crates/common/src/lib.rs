@@ -65,6 +65,26 @@ pub fn pkcs7pad(input: &str, block_size: usize, padding: char) -> String {
     output
 }
 
+pub fn detect_pkcs7(input: impl AsRef<str>) -> bool {
+    let input = input.as_ref().as_bytes();
+    let count = match input.last() {
+        Some(end) => end,
+        None => return true,
+    };
+
+    if *count == 0 {
+        return true;
+    }
+
+    for b in input.iter().rev().take(*count as usize) {
+        if b != count {
+            return false;
+        }
+    }
+
+    true
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
