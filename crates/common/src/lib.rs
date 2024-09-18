@@ -65,6 +65,20 @@ pub fn pkcs7pad(input: &str, block_size: usize, padding: char) -> String {
     output
 }
 
+pub fn pkcs7(input: impl AsRef<[u8]>, block_size: usize) -> Vec<u8> {
+    let input = input.as_ref();
+
+    let mut output = Vec::from(input);
+    let amount = (block_size - input.len() % block_size) % block_size;
+    output.reserve(amount);
+
+    for _ in 0..amount {
+        output.push(amount as u8);
+    }
+
+    output
+}
+
 pub fn detect_pkcs7(input: impl AsRef<str>) -> bool {
     let input = input.as_ref().as_bytes();
     let count = match input.last() {
@@ -131,6 +145,33 @@ mod tests {
         assert_eq!(
             pkcs7pad(input, 20, '\x04'),
             "YELLOW SUBMARINE\x04\x04\x04\x04"
+        );
+    }
+
+    #[test]
+    fn padding_works2() {
+        let input = "YELLOW SUBMARINE";
+
+        assert_eq!(
+            pkcs7(input, 20).as_slice(),
+            "YELLOW SUBMARINE\x04\x04\x04\x04".as_bytes()
+        );
+    }
+
+    #[test]
+    fn padding_works3() {
+        let input = "YELLOW SUBMARINE";
+
+        assert_eq!(pkcs7(input, 16).as_slice(), "YELLOW SUBMARINE".as_bytes());
+    }
+
+    #[test]
+    fn padding_works4() {
+        let input = "YELLOW SUBMARINE";
+
+        assert_eq!(
+            pkcs7(input, 17).as_slice(),
+            "YELLOW SUBMARINE\x01".as_bytes()
         );
     }
 }
