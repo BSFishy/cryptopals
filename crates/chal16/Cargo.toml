@@ -1,0 +1,8 @@
+[package]
+name = "chal16"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ascii.workspace = true
+common.workspace = true

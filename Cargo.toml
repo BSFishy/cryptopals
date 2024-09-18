@@ -11,6 +11,7 @@ common = { path = "crates/common" }
 ecb = "0.1"
 hex = "0.4"
 openssl = "0.10"
+percent-encoding = "2.3"
 rand = "0.8"
 thiserror = "1.0"
 utf8_reader = { git = "https://github.com/BSFishy/lexer.git" }

@@ -7,10 +7,12 @@ edition = "2021"
 
 [dependencies]
 aes.workspace = true
+ascii.workspace = true
 base64.workspace = true
 ecb.workspace = true
 hex.workspace = true
 openssl.workspace = true
+percent-encoding.workspace = true
 rand.workspace = true
 thiserror.workspace = true
 utf8_reader.workspace = true

@@ -110,6 +110,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "chal16"
+version = "0.1.0"
+dependencies = [
+ "ascii",
+ "common",
+]
+
+[[package]]
 name = "chal3"
 version = "0.1.0"
 dependencies = [
@@ -184,10 +192,12 @@ name = "common"
 version = "0.1.0"
 dependencies = [
  "aes",
+ "ascii",
  "base64",
  "ecb",
  "hex",
  "openssl",
+ "percent-encoding",
  "rand",
  "thiserror",
  "utf8_reader",
@@ -322,6 +332,12 @@ dependencies = [
  "pkg-config",
  "vcpkg",
 ]
+
+[[package]]
+name = "percent-encoding"
+version = "2.3.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e3148f5046208a5d56bcfc03053e3ca6334e51da8dfb19b6cdc8b306fae3283e"
 
 [[package]]
 name = "pkg-config"

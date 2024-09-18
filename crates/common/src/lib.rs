@@ -7,11 +7,29 @@ pub use oracle::{encryption_oracle, encryption_oracle2, has_repeats, EncryptionM
 
 pub mod kv;
 
+pub mod cbc_oracle;
+
 pub fn xor(
     a: impl IntoIterator<Item = u8>,
     b: impl IntoIterator<Item = u8>,
 ) -> impl Iterator<Item = u8> {
     a.into_iter().zip(b).map(|(a, b)| a ^ b)
+}
+
+pub fn asymmetric_xor(a: impl IntoIterator<Item = u8>, b: impl IntoIterator<Item = u8>) -> Vec<u8> {
+    let (mut a, mut b) = (a.into_iter(), b.into_iter());
+    let mut out = Vec::new();
+
+    loop {
+        match (a.next(), b.next()) {
+            (Some(a), Some(b)) => out.push(a ^ b),
+            (Some(a), None) => out.push(a),
+            (None, Some(b)) => out.push(b),
+            (None, None) => break,
+        }
+    }
+
+    out
 }
 
 pub fn single_byte_xor(iter: impl IntoIterator<Item = u8>, val: u8) -> impl Iterator<Item = u8> {
